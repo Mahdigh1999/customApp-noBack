@@ -1,0 +1,18 @@
+:root{
+    --dark : #666;
+    --text-dark : #eee;
+    --light:#eee;
+    --text-light:#111;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.dark{
+    color: var(--text-dark);
+    background-color: var(--dark);
+}
+.light{
+    color: var(--text-light);
+    background-color: var(--light);
+}

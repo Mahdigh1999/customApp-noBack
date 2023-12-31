@@ -1,0 +1,107 @@
+.navBar {
+  border-bottom: 1px solid rgb(83, 83, 236);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  width: 1360px;
+  height: 40px;
+  margin: auto;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.darkLightBox {
+  user-select: none;
+  gap: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: blueviolet;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+}
+.darkLightBox img {
+  height: 20px;
+}
+#mainSearch {
+  padding-left: 10px;
+  overflow: hidden;
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  width: 50%;
+  background-color: #ddd;
+}
+#mainSearchIcon {
+  display: flex;
+  justify-content: center;
+  margin-right: 5px;
+  /* border: 1px solid red; */
+}
+#Search {
+  flex-grow: 1;
+  display: inline-block;
+  width: 80%;
+  padding: 10px 0px;
+  border: 0 none;
+  background-color: inherit;
+  outline: none;
+}
+
+.authHolder {
+  display: flex;
+  align-items: center;
+
+
+  
+  
+  /* height: 50%; */
+}
+.authHolder >a {
+border-radius: 10px;
+    padding: 10px;
+    color: inherit;
+  text-decoration: none;
+  background-color: rgb(0, 176, 0);
+}
+
+@media screen and (max-width: 1360px) {
+  .navBar {
+    width: 90%;
+  }
+  .darkLightBox {
+    font-size: 1.5vw;
+  }
+  .darkLightBox img {
+    height: 2vw;
+  }
+  .authHolder {
+    padding: 10px;
+    font-size: 1.5vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #Search {
+    font-size: 12px;
+  }
+  #Search::placeholder {
+    font-size: 2vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .darkLightBox {
+    padding: 10px 8px 10px 8px;
+    font-size: 1.5vw;
+  }
+  .darkLightBox img {
+    height: 0.7rem;
+  }
+  .authHolder {
+    padding: 10px 8px 10px 8px;
+    font-size: 2vw;
+  }
+}
