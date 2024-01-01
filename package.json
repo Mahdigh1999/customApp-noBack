@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compileMenuBar":"sass --watch --no-source-map ./scss/menuBar.scss ./styles/navBar/menuBar.css"
   },
   "author": "",
   "license": "ISC",
