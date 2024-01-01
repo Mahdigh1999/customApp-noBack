@@ -1,12 +1,72 @@
-.menuBar{
-    border-bottom: 1px solid rgb(83, 83, 236);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: flex;
-    align-items: center;
-    width: 1360px;
-    height: 40px;
-    margin: auto;
-    /* flex-direction: row-reverse; */
-    justify-content: space-between;
+.menuBar {
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  width: 1360px;
+  height: 40px;
+  margin: auto;
+}
+.menuBar input {
+  display: none;
+}
+.menuBar label {
+  display: none;
+}
+.menuBar ul {
+  padding: 0;
+  margin: 20px;
+  list-style: none;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+.menuBar ul li {
+  position: relative;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-right: 20px;
+}
+.menuBar ul li:hover::before {
+  position: absolute;
+  bottom: -10px;
+  content: "";
+  border-radius: 5px;
+  border-bottom: 5px solid blue;
+  animation: underliner 0.1s linear forwards;
+}
+.menuBar ul li:hover {
+  background-color: #888;
+}
+.menuBar #shoppingCartBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  font-size: 15px;
+  background-color: blue;
+  border-radius: 10px;
+}
+
+@keyframes underliner {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1360px) {
+  .menuBar {
+    width: 90%;
+  }
+  .menuBar ul li {
+    font-size: 15px;
+  }
 }
