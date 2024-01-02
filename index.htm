@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./styles/navBar/navBar.css" />
     <link rel="stylesheet" href="./styles/navBar/menuBar.css" />
     <link rel="stylesheet" href="./styles/content/content.css" />
+    <link rel="stylesheet" href="./styles/content/filtersSide.css" />
+    <link rel="stylesheet" href="./styles/content/showItems.css" />
   </head>
   <body class="light">
     <div class="navBar">
@@ -39,12 +41,12 @@
       </div>
     </div>
     <div class="menuBar">
-      <div id="logo"><img src="./data/images/mainLogo/logo.png" height="50px" alt="" /></div>
+      <div id="logo">
+        <img src="./data/images/mainLogo/logo.png" height="50px" alt="" />
+      </div>
 
       <ul id="Menu" class="mobile">
-        <li>Movies
-
-        </li>
+        <li>Movies</li>
         <li>Creators</li>
         <li>Gadjets</li>
         <li>Environments</li>
@@ -68,20 +70,101 @@
       </div>
     </div>
     <div id="content">
-        <ul id="filters">
-          <li>
-            <input id="openStatPriceFil" type="checkbox">
-            <label for="openStatPriceFil">open</label>
-          </li>
+      <ul id="filters">
+        <li>
+          <input id="openStatPriceFil" type="checkbox" checked name="filters" />
+          <label for="openStatPriceFil">Price</label>
+          <div id="priceFilBox" class="rangi">
+            <span>from</span>
+            <input
+              id="startPrice"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              value="0"
+            />
+            <output id="startPriceOut">0 $</output>
+            <span>to</span>
+            <input
+              id="finalPrice"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              value="100"
+            />
+            <output id="finalPriceOut">100 $</output>
+          </div>
+        </li>
+        <li>
+          <input id="openStatGenreFil" type="checkbox" checked name="filters" />
+          <label for="openStatGenreFil">Genre</label>
+          <div id="genreFilBox">
+            <input id="AllGenre" type="radio" name="Genres" />
+            <label for="AllGenre"> All Genre </label>
+            <input id="Action" type="radio" name="Genres" />
+            <label for="Action"> Action </label>
+            <input id="Comedy" type="radio" name="Genres" />
+            <label for="Comedy"> Comedy </label>
+            <input id="Romancy" type="radio" name="Genres" />
+            <label for="Romancy"> Romancy </label>
+            <input id="Drama" type="radio" name="Genres" />
+            <label for="Drama"> Drama </label>
+            <input id="Animation" type="radio" name="Genres" />
+            <label for="Animation"> Animation </label>
+            <input id="Sci-Fi" type="radio" name="Genres" />
+            <label for="Sci-Fi"> Sci-Fi </label>
+            <input id="Fantasy" type="radio" name="Genres" />
+            <label for="Fantasy"> Fantasy </label>
+          </div>
+        </li>
+        <li>
+          <input id="openStatStockFil" type="checkbox" name="filters" />
+          <label for="openStatStockFil">Stock</label>
+          <div id="stockFilBox">
+            <input id="AllStock" type="radio" name="Stock" />
+            <label for="AllStock"> All </label>
+            <input id="Exists" type="radio" name="Stock" />
+            <label for="Exists"> Exists </label>
+          </div>
+        </li>
+        <li>
+          <input id="openStatRateFil" type="checkbox" name="filters" />
+          <label for="openStatRateFil">Rate</label>
+          <div id="rateFilBox" class="rangi">
+            <span>from</span>
+            <input
+              id="startRate"
+              type="range"
+              min="0"
+              max="10"
+              step="0.1"
+              value="0"
+            />
+            <output id="startRateOut">0 </output>
+            <span>to</span>
+            <input
+              id="finalRate"
+              type="range"
+              min="0"
+              max="10"
+              step="0.1"
+              value="10"
+            />
+            <output id="finalRateOut">100 </output>
+          </div>
+        </li>
+      </ul>
+      <div id="showItems">
 
-        </ul>
-        <div id="showItems">
 
-        </div>
+
+      </div>
     </div>
     <div></div>
-    <script  type="text/javascript" src="./scripts/fakeMoviesData.js"></script>
+    <script type="text/javascript" src="./scripts/fakeMoviesData.js"></script>
     <script type="text/javascript" src="./scripts/renderData.js"></script>
-    <script  type="text/javascript" src="./scripts/darkLight.js"></script>
+    <script type="text/javascript" src="./scripts/darkLight.js"></script>
   </body>
 </html>
