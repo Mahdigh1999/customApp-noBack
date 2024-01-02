@@ -4,6 +4,15 @@
     --light:#eee;
     --text-light:#111;
 }
+.dark-mode{
+    fill: #fff;
+    color: var(--light);
+}
+.light-mode{
+    fill: #111;
+    color: var(--text-light);
+}
+
 body{
     margin: 0;
     padding: 0;

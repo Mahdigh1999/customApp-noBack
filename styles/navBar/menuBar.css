@@ -45,6 +45,8 @@
   background-color: #888;
 }
 .menuBar #shoppingCartBtn {
+  user-select: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,6 +55,16 @@
   background-color: blue;
   border-radius: 10px;
 }
+.menuBar #shoppingCartBtn:hover {
+  background-color: blueviolet;
+  color: #ccc;
+}
+
+
+
+
+
+
 
 @keyframes underliner {
   0% {
