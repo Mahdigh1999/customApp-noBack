@@ -1,6 +1,24 @@
 #content{
-    height: 2000px;
+    /* height: 2000px; */
     width: 1360px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin:20px auto;
+    display: flex;
+    
+}
+
+
+
+@media screen and (max-width:1359px) {
+    #content{
+
+    width: 92%;
+
+}
+}
+@media screen and (max-width:800px) {
+    #content{
+        display: block;
+
+    }
 }
