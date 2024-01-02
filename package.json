@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compileMenuBar":"sass --watch --no-source-map ./scss/menuBar.scss ./styles/navBar/menuBar.css"
+    "compileMenuBar":"sass --watch --no-source-map ./scss/menuBar.scss ./styles/navBar/menuBar.css",
+    "compileShoppingCartPage":"sass --watch --no-source-map ./scss/shoppingCartPage.scss ./styles/shoppingCArtPage.css",
+    "compileMovieModal" : "sass --watch --no-source-map ./scss/movieModal.scss ./styles/movieModal.css "
   },
   "author": "",
   "license": "ISC",

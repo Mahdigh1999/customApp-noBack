@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./styles/content/content.css" />
     <link rel="stylesheet" href="./styles/content/filtersSide.css" />
     <link rel="stylesheet" href="./styles/content/showItems.css" />
+    <link rel="stylesheet" href="./styles/shoppingCartPage.css">
+    <link rel="stylesheet" href="./styles/movieModal.css">
   </head>
   <body class="light">
     <div class="navBar">
@@ -54,9 +56,11 @@
         <li>Contact Us</li>
         <li>More Info</li>
       </ul>
-      <div id="shoppingCartBtn">
+      <div id="shoppingCartBtn" >
         Shopping Cart
         <svg
+          class="darkLight"
+          id = "shoppingCartSVG"
           xmlns="http://www.w3.org/2000/svg"
           height="16"
           width="18"
@@ -101,12 +105,12 @@
           <input id="openStatGenreFil" type="checkbox" checked name="filters" />
           <label for="openStatGenreFil">Genre</label>
           <div id="genreFilBox">
-            <input id="AllGenre" type="radio" name="Genres" />
+            <input id="AllGenre" type="radio" name="Genres"  />
             <label for="AllGenre"> All Genre </label>
             <input id="Action" type="radio" name="Genres" />
             <label for="Action"> Action </label>
-            <input id="Comedy" type="radio" name="Genres" />
-            <label for="Comedy"> Comedy </label>
+            <input id="Commedy" type="radio" name="Genres"   />
+            <label for="Commedy"> Comedy </label>
             <input id="Romancy" type="radio" name="Genres" />
             <label for="Romancy"> Romancy </label>
             <input id="Drama" type="radio" name="Genres" />
@@ -115,7 +119,7 @@
             <label for="Animation"> Animation </label>
             <input id="Sci-Fi" type="radio" name="Genres" />
             <label for="Sci-Fi"> Sci-Fi </label>
-            <input id="Fantasy" type="radio" name="Genres" />
+            <input id="Fantasy" type="radio" name="Genres"  />
             <label for="Fantasy"> Fantasy </label>
           </div>
         </li>
@@ -141,7 +145,7 @@
               max="10"
               step="0.1"
               value="0"
-            />
+            >
             <output id="startRateOut">0 </output>
             <span>to</span>
             <input
@@ -152,19 +156,126 @@
               step="0.1"
               value="10"
             />
-            <output id="finalRateOut">100 </output>
+            <output id="finalRateOut">10 </output>
           </div>
         </li>
       </ul>
-      <div id="showItems">
+      <div class="contentHolder">
+        <ul class="sorts">
+          <li>
+            <input type="checkbox" id="ascDsce" name="sorts">
+            <label id="ascDsceLabel" for="ascDsce">Ascending</label>
+          </li>
+          <li >
+            <input type="radio" id="nameSort" name="sorts">
+            <label for="nameSort">By Name</label>
+          </li>
+          <li >
+            <input type="radio" id="dateSort" name="sorts">
+            <label for="dateSort">Newest</label>
+          </li>
+          <li >
+            <input type="radio" id="priceSort" name="sorts">
+            <label for="priceSort">Cheapest</label>
+          </li>
+          <li >
+            <input type="radio" id="rateSort" name="sorts">
+            <label for="rateSort">IMDB Rate</label>
+          </li>
+          <li >
+            <input type="radio" id="existSort" name="sorts">
+            <label for="existSort">Exists</label>
+          </li>
+          <li >
+            <input type="radio" id="likeSort" name="sorts">
+            <label for="likeSort">Popular</label>
+          </li>
+          
+
+        </ul>
+        <div id="showItems"></div>
+      </div>
+      
+      
+
+
+      </div>
+    </div>
+    <div id="shoppingCartPage" class="darkLight">
+      <div id = 'closeSCP'>
+        <div>
+          <span></span>
+        
+        </div>
+      </div>
+    </div>
+    <div id="movieModal">
+      <div id="closeMM"></div>
+      <div class="holder">      
+        <div id="slider">
+        <div id="gallery">
+          <div class="items">
+            <img src="./data/images/movies/Aladdin/01.jpg" alt="sorry" /> 
+          </div>
+          <div class="items">
+            <img src="./data/images/movies/Aladdin/02.jpg" alt="sorry" />
+          </div>
+          <div class="items">
+            <img src="./data/images/movies/Aladdin/03.jpg" alt="sorry" />
+          </div>
+          <div class="items">
+            <img src="./data/images/movies/Aladdin/04.jpg" alt="sorry" />
+          </div>
+          <div class="items">
+            <img src="./data/images/movies/Aladdin/05.jpg" alt="sorry" />
+          </div>
+        </div>
+        <div id="circles">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div id="rightClick"></div>
+        <div id="leftClick"></div>
+      </div>
+      
+      <div class="info">
+        <div id="addToBascket">Add To Shopping Cart 
+          <svg
+          class="darkLight"
+          id = "shoppingCartSVG"
+          xmlns="http://www.w3.org/2000/svg"
+          height="16"
+          width="18"
+          viewBox="0 0 576 512"
+        >
+          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+          <path
+            d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+          />
+        </svg>
+        </div>
+        <span>Name : </span>
+        <span>Genre :</span>
+        <span>Release Date : </span>
+        <span>All Creators : </span>
+        <span>Exist :</span>
+        <span>OffTime:</span>
+        <span>Rate:</span>
+        <span class="discribe">Discribtion :<p>Hi I ma her to write something for test word and i dont know that i should what say to you </p></span>
+      </div>
+    </div>
 
 
 
       </div>
     </div>
-    <div></div>
     <script type="text/javascript" src="./scripts/fakeMoviesData.js"></script>
+    <script type="text/javascript" src="./scripts/movieModal.js"></script>
     <script type="text/javascript" src="./scripts/renderData.js"></script>
     <script type="text/javascript" src="./scripts/darkLight.js"></script>
+    <script type="text/javascript" src="./scripts/shoppingCart.js"></script>
   </body>
 </html>
