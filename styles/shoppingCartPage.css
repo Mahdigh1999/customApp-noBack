@@ -1,4 +1,5 @@
 #shoppingCartPage {
+  overflow-y: scroll;
   transition: 0.5s;
   border-radius: 20px;
   position: fixed;
@@ -9,6 +10,7 @@
   left: 5%;
   top: -150%;
   border: 1px solid #ccc;
+
 }
 #shoppingCartPage #closeSCP {
   background: url("../data/icons/colpse/close.png") no-repeat 50% 50%;
@@ -21,12 +23,97 @@
   padding: 20px;
   cursor: pointer;
 }
+#shoppingCartHolder{
+  /* border: 1px solid red; */
+  width: 80%;
+  margin: auto;
+  /* height: 200px ; */
+  border-radius: 10px;
+}
+#shoppingCartHolder > .SCHItems{
+  margin: 10px 0 10px 0;
+  display: flex;
+  justify-content: space-between;
+  /* height: 50px;   */
+  border-radius: 3px;
+  border: 1px solid blue;
+}
+#shoppingCartHolder > .SCHItems > div >button{
+  padding: 5px 8px 5px 8px ;
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: blue;
+}
+#shoppingCartHolder > .SCHItems > div >button:first-child{
+  padding: 5px 10px 5px 10px ;
+  background-color: red;
+  
+}
+#shoppingCartHolder > .SCHItems  span{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100%;   */
+  /* border-radius: 10px; */
+  /* border: 1px solid blue; */
+}
+#shoppingCartHolder > .SCHItems > span:first-child{border-right: 1px solid blue;}
+#totalPrice{
+  user-select: none;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  border: 1px solid olive;
+  width: fit-content;
+  padding: 10px 30px 10px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#peyment{
+  background-color:blueviolet ;
+  user-select: none;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  border: 1px solid blueviolet;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 1000px) {
   #shoppingCartPage {
-    top: 0;
-    left: 0;
-    width: 100%;
+    /* top: 0; */
+    font-size: 10px;
+    left: 0.5%;
+    width: 99%;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 800px) {
+  #shoppingCartPage {
+    /* top: 0; */
+    font-size: 1.5vw;
+    left: 0.5%;
+    width: 99%;
     height: 100%;
   }
 }

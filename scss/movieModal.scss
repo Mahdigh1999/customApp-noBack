@@ -1,14 +1,15 @@
 $rounded-lg : 10px;
 
-
 #movieModal{
+    scrollbar-width: 0px;
+    overflow-y: scroll;
     transition: 0.5s;
     box-shadow: 1px 1px 10px 5px #ccc;
     border: 1px solid #ccc;
     border-radius: $rounded-lg;
     position: fixed;
     top: 5%;
-    left: 5%;
+    left: -150%;
     width: 90%;
     height: 90%;
     // background-color: rgb(123, 95, 150);
@@ -30,12 +31,13 @@ $rounded-lg : 10px;
     border: 1px solid #888;
 }
 .holder{
+    border-radius: $rounded-lg;
+    border: 1px solid #888;
     position: relative;
-    border: 1px solid black;
-    padding: 100px;
+    padding: 80px;
     display: flex;
 }
-#addToBascket{
+.addToBascket{
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -51,25 +53,36 @@ $rounded-lg : 10px;
     right: 10px;
     background-color: red;
 }
+.disabled{
+    cursor: not-allowed;
+  }
 .discribe > p{
     margin-left:5px ;
     padding: 0;
     display: inline;
     word-break: break-all;
 }
-#addToBascket *{
+.addToBascket *{
     margin-left: 10px;
 }
-.holder span{
+.holder > #modalInfo {
+    margin-left: 10px;
+}
+
+.holder > #modalInfo >span{
     border-radius: $rounded-lg;
-    margin: 10px;
-    padding: 10px;
+
     display: block;
     width: 400px;
     border: 1px solid #888;
+    padding: 10px 0 10px 0px;
+    margin-bottom: 10px ;
 }
+
+
+        
 #slider{
-    // border: 1px solid red;
+    border: 1px sol id red;
     overflow: hidden;
     border-radius: 10px;
     position: relative;
@@ -101,12 +114,15 @@ $rounded-lg : 10px;
     transition: 0.5s; 
     position: relative;
     left: 0;
+    // display: flex;
+    float: left;
     /* border: red solid 1px; */
     width: 500%;
     height: 100%;
     
 }
 #slider > #gallery > .items { 
+    // padding: 5%;
     float: left;
     width: 20%;
     height: 100%;    
@@ -114,7 +130,7 @@ $rounded-lg : 10px;
     justify-content: center;
 }
 #slider > #gallery > .items > img{ 
-
+    border-radius: 10px;
     // margin: auto;
     width: 100%;
     height: 95%;
@@ -125,7 +141,7 @@ $rounded-lg : 10px;
     border-radius: 10px 0 0 10px;
     cursor: pointer;
     position: absolute;
-    top:calc(50% - 30px);
+    top:calc(45% - 30px);
     right: 0;
     /* border: red 1px solid; */
     width: 40px;
@@ -141,7 +157,7 @@ $rounded-lg : 10px;
     cursor: pointer;
     border-radius:  0 10px 10px 0 ;
     position: absolute;
-    top:calc(50% - 30px);
+    top:calc(45% - 30px);
     left: 0;
     position: absolute;
     /* border: red 1px solid; */
@@ -153,4 +169,91 @@ $rounded-lg : 10px;
     opacity: 1;
     visibility: visible;
 
+}
+
+
+
+@media screen and (max-width:1000px) {
+    #movieModal{
+        top:0 ;
+        width: 99%;
+        height: 99%;
+        display: block;
+
+    }
+    .holder{
+        width:80%;
+        margin: auto;
+        display: block;
+        position: relative;
+        padding: 0;
+    }
+    .holder > #modalInfo {
+        margin:auto;
+        width: 100%;
+        padding: 0;
+    }
+    .holder > #modalInfo >span{
+        
+        display: block;
+        width: 100%;
+
+    }
+    #slider{
+        width: 100%;
+    }
+    #slider > #gallery > .items { 
+        padding: 10px 2% 10px 2%;
+        float: left;
+        width: 16%;
+        height: calc(100% - 20px);    
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 600px){
+    .holder{
+        width:70%;
+        
+        margin: auto;
+        display: block;
+        position: relative;
+        padding: 0;
+    }
+    .holder > #modalInfo {
+        margin:auto;
+        width: 100%;
+        padding: 0;
+    }
+    .holder > #modalInfo >span{
+        
+        width: 100%;
+
+    }
+    #slider{
+        width: 100%;
+        height: 350px;
+    }
+    .addToBascket{
+        padding: 7px;
+        font-size: 12px;
+    }
+    #slider > #gallery > .items { 
+        padding: 0;
+        float: left;
+        width: 20%;
+        height: 100%;    
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 400px){
+    #slider{
+        width: 100%;
+        height: 250px;
+    }
+    .addToBascket{
+        padding: 5px;
+        font-size: 10px;
+    }
 }
