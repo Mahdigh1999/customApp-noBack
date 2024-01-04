@@ -58,27 +58,13 @@ function bodyColorAndDarkLightBtn(darkStat){
 
 function flexibleColorItems(color) {
   const flex = document.getElementsByClassName("flex-color");
-  // shoppingCartPage.style.backgroundColor = '#333';
-  // movieModal.style.backgroundColor = '#333';
-  // Menu.style.backgroundColor = '#333';
-  // if(!flex){
-  //   return;
-  // }
-  // const flex2 = flex.slice(0,flex.length-4);
-  // console.log(flex2);
-  // console.log(flex[1]);
-
   for(let i in flex){
-
-
       if((typeof flex[i]) == "object"){
-        console.log(typeof flex[i] , flex[i]);
+        // console.log(typeof flex[i] , flex[i]);
         flex[i].style.backgroundColor = color;
 
       }
         
   }
-  // for (let i in flex){
-  //   console.log(flex[0]);
-  // }
+
 }
