@@ -1,56 +1,68 @@
 $rounded-lg : 10px;
+@mixin fairSize($size){
+    height: $size;
+    width: $size;
+}
+@mixin itemsCenterFlex(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin borderedRounded( $size,$color:#ccc){
+    border: 1px solid $color;
+    border-radius: $size;
+}
+@mixin positionist($top:'' ,$right:'' ,  $bottom:'' , $left:'' ){
+    @if $top{
+        top: $top;
+    }
+    @if $right{
+        right: $right;
+    }
+    @if $bottom{
+        bottom: $bottom;
+    }
+    @if $left{
+        left: $left;
+    }
+}
+
 
 #movieModal{
     scrollbar-width: 0px;
     overflow-y: scroll;
     transition: 0.5s;
     box-shadow: 1px 1px 10px 5px #ccc;
-    border: 1px solid #ccc;
-    border-radius: $rounded-lg;
     position: fixed;
-    top: 5%;
-    left: -150%;
-    width: 90%;
-    height: 90%;
-    // background-color: rgb(123, 95, 150);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+    @include borderedRounded(10px);
+    @include positionist(5%,-150% );
+    @include fairSize(90%);
+    @include itemsCenterFlex();
 }
 #closeMM{
     cursor: pointer;
-    background: url('../data/icons/colpse/close.png') 50% 50% no-repeat;
-    background-size: 30px;
-    border-radius: $rounded-lg;
-    left: 5px;
-    top: 5px;
     position: absolute;
-    height: 50px;
-    width: 50px;
-    border: 1px solid #888;
+    @include itemsCenterFlex();
+    @include positionist(5px,'' ,'',5px );
+    @include borderedRounded(10px,#888 );
+    @include fairSize(50px);
+
 }
 .holder{
-    border-radius: $rounded-lg;
-    border: 1px solid #888;
+    @include borderedRounded(10px , none);
     position: relative;
     padding: 80px;
     display: flex;
 }
 .addToBascket{
+    @include itemsCenterFlex();
+    @include fairSize(fit-content);
+    @include borderedRounded(10px,red );
+    @include positionist(10px,10px );
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     user-select: none;
     position: absolute;
-    width: fit-content;
-    height: fit-content;
     padding: 10px;
-    border: 1px solid red;
-    border-radius: $rounded-lg;
-    top: 10px;
-    right: 10px;
     background-color: red;
 }
 .disabled{
@@ -70,11 +82,9 @@ $rounded-lg : 10px;
 }
 
 .holder > #modalInfo >span{
-    border-radius: $rounded-lg;
-
+    @include borderedRounded(10px,#888 );
     display: block;
     width: 400px;
-    border: 1px solid #888;
     padding: 10px 0 10px 0px;
     margin-bottom: 10px ;
 }
@@ -82,9 +92,8 @@ $rounded-lg : 10px;
 
         
 #slider{
-    border: 1px sol id red;
+    @include borderedRounded(10px,none);
     overflow: hidden;
-    border-radius: 10px;
     position: relative;
     height: 415px;
     width: 400px;
@@ -92,9 +101,7 @@ $rounded-lg : 10px;
 #circles{
     bottom: 0;
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include itemsCenterFlex();
     width: 100%;
     height: 5%;
     // border: 1px solid red;
@@ -103,8 +110,7 @@ $rounded-lg : 10px;
 #circles div{
     cursor: pointer;
     margin: 5px;
-    height: 10px ;
-    width: 10px;
+    @include fairSize(10px);
     background-color: #888;
     border-radius: 50%;
 
@@ -139,36 +145,22 @@ $rounded-lg : 10px;
 
 #slider > #rightClick {
     border-radius: 10px 0 0 10px;
-    cursor: pointer;
-    position: absolute;
-    top:calc(45% - 30px);
     right: 0;
-    /* border: red 1px solid; */
-    width: 40px;
-    height: 60px;
-    background: url("../data/icons/sides/right.png") no-repeat red;
-    background-size: 70% ;
-    background-position: 50%;
-    opacity: 1;
-    visibility: visible;
 }
-
-#slider > #leftClick {
+#slider > #leftClick,
+#slider > #rightClick  {
+    @include itemsCenterFlex();
+    width: 35px;
+    height: 55px;
+    background-color:  red;
+    opacity: 0.8;    
     cursor: pointer;
-    border-radius:  0 10px 10px 0 ;
     position: absolute;
     top:calc(45% - 30px);
+}
+#slider > #leftClick {
+    border-radius:  0 10px 10px 0 ;
     left: 0;
-    position: absolute;
-    /* border: red 1px solid; */
-    width: 40px;
-    height: 60px;
-    background: url("../data/icons/sides/left.png") no-repeat red ;
-    background-size: 70% ;
-    background-position: 50%;    
-    opacity: 1;
-    visibility: visible;
-
 }
 
 
@@ -176,8 +168,7 @@ $rounded-lg : 10px;
 @media screen and (max-width:1000px) {
     #movieModal{
         top:0 ;
-        width: 99%;
-        height: 99%;
+        @include fairSize(99%);
         display: block;
 
     }
@@ -203,12 +194,23 @@ $rounded-lg : 10px;
         width: 100%;
     }
     #slider > #gallery > .items { 
-        padding: 10px 2% 10px 2%;
+        padding: 10px 1% 10px 1%;
         float: left;
-        width: 16%;
+        width: 18%;
         height: calc(100% - 20px);    
         display: flex;
         justify-content: center;
+    }
+    .addToBascket{
+
+        right: 5%;
+    }
+    
+    #slider > #rightClick  {
+        right: 5%;
+    }
+    #slider > #leftClick{
+        left: 5% ;
     }
 }
 @media screen and (max-width: 600px){
@@ -245,6 +247,12 @@ $rounded-lg : 10px;
         height: 100%;    
         display: flex;
         justify-content: center;
+    }
+    #slider > #rightClick  {
+        right: 0;
+    }
+    #slider > #leftClick{
+        left:  0;
     }
 }
 @media screen and (max-width: 400px){

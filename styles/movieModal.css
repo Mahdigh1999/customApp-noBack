@@ -3,13 +3,15 @@
   overflow-y: scroll;
   transition: 0.5s;
   box-shadow: 1px 1px 10px 5px #ccc;
+  position: fixed;
   border: 1px solid #ccc;
   border-radius: 10px;
-  position: fixed;
   top: 5%;
-  left: -150%;
-  width: 90%;
+  right: -150%;
+  bottom: "";
+  left: "";
   height: 90%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,39 +19,44 @@
 
 #closeMM {
   cursor: pointer;
-  background: url("../data/icons/colpse/close.png") 50% 50% no-repeat;
-  background-size: 30px;
-  border-radius: 10px;
-  left: 5px;
-  top: 5px;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 5px;
+  right: "";
+  bottom: "";
+  left: 5px;
+  border: 1px solid #888;
+  border-radius: 10px;
   height: 50px;
   width: 50px;
-  border: 1px solid #888;
 }
 
 .holder {
+  border: 1px solid none;
   border-radius: 10px;
-  border: 1px solid #888;
   position: relative;
   padding: 80px;
   display: flex;
 }
 
 .addToBascket {
-  cursor: pointer;
   display: flex;
-  align-items: center;
   justify-content: center;
-  user-select: none;
-  position: absolute;
-  width: fit-content;
+  align-items: center;
   height: fit-content;
-  padding: 10px;
+  width: fit-content;
   border: 1px solid red;
   border-radius: 10px;
   top: 10px;
   right: 10px;
+  bottom: "";
+  left: "";
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  padding: 10px;
   background-color: red;
 }
 
@@ -73,18 +80,18 @@
 }
 
 .holder > #modalInfo > span {
+  border: 1px solid #888;
   border-radius: 10px;
   display: block;
   width: 400px;
-  border: 1px solid #888;
   padding: 10px 0 10px 0px;
   margin-bottom: 10px;
 }
 
 #slider {
-  border: 1px sol id red;
-  overflow: hidden;
+  border: 1px solid none;
   border-radius: 10px;
+  overflow: hidden;
   position: relative;
   height: 415px;
   width: 400px;
@@ -137,19 +144,21 @@
   border-radius: 10px 0 0 10px;
   right: 0;
 }
-#slider > #leftClick ,
+
+#slider > #leftClick,
 #slider > #rightClick {
-  cursor: pointer;
-  position: absolute;  
-  top: calc(45% - 30px);  
-  width: 40px;
-  height: 60px;
-  opacity: 0.8;
-  background-color: red;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 55px;
+  background-color: red;
+  opacity: 0.8;
+  cursor: pointer;
+  position: absolute;
+  top: calc(45% - 30px);
 }
+
 #slider > #leftClick {
   border-radius: 0 10px 10px 0;
   left: 0;
@@ -158,8 +167,8 @@
 @media screen and (max-width: 1000px) {
   #movieModal {
     top: 0;
-    width: 99%;
     height: 99%;
+    width: 99%;
     display: block;
   }
   .holder {
@@ -167,7 +176,6 @@
     margin: auto;
     display: block;
     position: relative;
-    border: 0 none;
     padding: 0;
   }
   .holder > #modalInfo {
@@ -183,23 +191,21 @@
     width: 100%;
   }
   #slider > #gallery > .items {
-    padding: 10px 2% 10px 2%;
+    padding: 10px 1% 10px 1%;
     float: left;
-    width: 16%;
+    width: 18%;
     height: calc(100% - 20px);
     display: flex;
     justify-content: center;
   }
-  #closeMM {
-
-    background-size: 20px;
-    border-radius: 5px;
-    left: 10px;
-    top: 10px;
-    height: 25px;
-    width: 25px;
-    padding: 5px;
-
+  .addToBascket {
+    right: 5%;
+  }
+  #slider > #rightClick {
+    right: 5%;
+  }
+  #slider > #leftClick {
+    left: 5%;
   }
 }
 @media screen and (max-width: 600px) {
@@ -233,6 +239,12 @@
     height: 100%;
     display: flex;
     justify-content: center;
+  }
+  #slider > #rightClick {
+    right: 0;
+  }
+  #slider > #leftClick {
+    left: 0;
   }
 }
 @media screen and (max-width: 400px) {
