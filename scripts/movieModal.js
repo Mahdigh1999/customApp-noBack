@@ -1,34 +1,42 @@
-let pos = 0;
-rightClick.onclick = function () {
+function sliderGoRight(){
   pos >= 400 ? (pos = 0) : (pos = pos + 100);
-  gallery.style.left = -pos + "%"; // left : 0 click left: -100% click left : -200%
-};
-leftClick.onclick = function () {
+  gallery.style.left = -pos + "%"; 
+}  
+function sliderGoLeft(){
   pos <= 0 ? (pos = 400) : (pos = pos - 100);
   gallery.style.left = -pos + "%";
-};
-
-closeMM.addEventListener("click", () => {
+}
+function closeMovieModal(){
   movieModal.style.left = "-150%";
-});
-const openModal = (movie) => {
+}
+
+
+
+let pos = 0;  
+rightClick.addEventListener('click',sliderGoRight);
+leftClick.addEventListener('click',sliderGoLeft);
+closeMM.addEventListener("click",closeMovieModal);
+
+const openModalPage = () => {
   if(window.innerWidth<1000)
     movieModal.style.left = "0.5%";
   else{
     movieModal.style.left = "5%";
   }
-  
-  gallery.innerHTML = "";
-  gallery.style.left = "0";
-  // gallery.style.width = (movie.images.length * 100 ) + '%';
-  movie.images.forEach((image) => {
-    let div = document.createElement("div");
-    div.className = "items";
-    let img = document.createElement("img");
-    img.src = image;
-    div.appendChild(img);
-    gallery.appendChild(div);
-  });
+}
+const modalImagesRender =(images) =>{
+    gallery.innerHTML = "";
+    gallery.style.left = "0";
+    images.forEach((image) => {
+      let div = document.createElement("div");
+      div.className = "items";
+      let img = document.createElement("img");
+      img.src = image;
+      div.appendChild(img);
+      gallery.appendChild(div);
+    });
+}
+const modalInfoSpansRender = (movie) =>{
   modalInfo.innerHTML = "";
   const nameSpan = document.createElement("span");
   nameSpan.innerHTML = "Name :" + movie.movieName;
@@ -73,12 +81,14 @@ const openModal = (movie) => {
   discribeSpan.innerHTML = "Discribtion : ";
   discribeSpan.appendChild(pDiscribtion);
   modalInfo.appendChild(discribeSpan);
-
+}
+const addToShoppingCartBtnRender = (movie) =>{
+  const darkLightFillsNoClickOnDarkLightBtn = JSON.parse(localStorage.getItem("darkLight")).dark ;
   const addToBascket = document.createElement("button");
   const ASCSvg = `<svg
                     class="darkLight"
                     fill = ${
-                        JSON.parse(localStorage.getItem("darkLight")).dark ? "#fff" : "#111"
+                      darkLightFillsNoClickOnDarkLightBtn ? "#fff" : "#111"
                       }
                     xmlns="http://www.w3.org/2000/svg"
                     height="16"
@@ -100,7 +110,16 @@ const openModal = (movie) => {
   }
   addToBascket.addEventListener('click',() => addToSoppingCart(movie))
   modalInfo.appendChild(addToBascket);
+}
+const openModal = (movie) => {
+  openModalPage();
+  modalImagesRender(movie.images);
+  modalInfoSpansRender(movie);
+  addToShoppingCartBtnRender(movie);
+
 };
+
+
 const addToSoppingCart = (movie) => {
     let shoppingCart =  JSON.parse(localStorage.getItem('shoppingCart'));
     if(!shoppingCart)
@@ -129,76 +148,65 @@ const addToSoppingCart = (movie) => {
 
 
 
+function minusBtnRender(scId){
+  //scId 
+  
+  const minusBtn = document.createElement('button');
+  minusBtn.innerHTML = '-';
 
-
-
-
-
-
-
-
-
-function renderShoppingCartItem({scId,scName,scPrice,scRate,count}){
-    let shoppingCart =  JSON.parse(localStorage.getItem('shoppingCart'));
-
-    // console.log(shoppingCart.length);
-    // let initialVal = 0 ;
-    // //  total =0
-    // const total =(shoppingCart.length == 0 || !shoppingCart) ? 0: shoppingCart.reduce((acc , item) => acc + ((item.count) * (item.scPrice)),initialVal)
-
-    const number = shoppingCart.findIndex(localStorageMovie => localStorageMovie.scId == scId) +1;
-    const SCHItems = document.createElement('div');
-    SCHItems.className = 'SCHItems';
-
-    const buttonsDiv = document.createElement('div');
-    const minusBtn = document.createElement('button');
-    minusBtn.innerHTML = '-';
-
-    minusBtn.addEventListener('click',()=>{
-    const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
-    const ourIndex = shoppingCart.findIndex(m => m.scId == scId);
-    
-    if(shoppingCart[ourIndex].count <= 1){
-        shoppingCart.splice(ourIndex,1);
-    }
-    else{
-        shoppingCart[ourIndex].count --;
-        console.log( shoppingCart[ourIndex].count);
-    }
-    shoppingCartHolder.innerHTML = '';
-    localStorage.setItem('shoppingCart',JSON.stringify(shoppingCart));
-    if(shoppingCart.length === 0 )
-        renderEmptySC();
-    shoppingCart.forEach(m =>{
-        renderShoppingCartItem(m);
-    })
-    console.log(shoppingCart);
-    calcTotalPrice();
+  minusBtn.addEventListener('click',()=>{
+  const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+  const ourIndex = shoppingCart.findIndex(m => m.scId == scId);
+  
+  if(shoppingCart[ourIndex].count <= 1){
+      shoppingCart.splice(ourIndex,1);
+  }
+  else{
+      shoppingCart[ourIndex].count --; //console.log( shoppingCart[ourIndex].count);  
+  }
+  shoppingCartHolder.innerHTML = '';
+  localStorage.setItem('shoppingCart',JSON.stringify(shoppingCart));
+  if(shoppingCart.length === 0 )
+      renderEmptySC();
+  shoppingCart.forEach(m =>{
+      renderShoppingCartItem(m);
+  })
+  // console.log(shoppingCart);
+  calcTotalPrice();
 });
+  return minusBtn;
+}
+function plusBtnRender(scId){
+  const plusBtn = document.createElement('button');
+  plusBtn.innerHTML = '+';
+  plusBtn.addEventListener('click',()=>{
+      const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+      const ourIndex = shoppingCart.findIndex(m => m.scId == scId);
+      
+      shoppingCart[ourIndex].count ++;
+      shoppingCartHolder.innerHTML = '';
+      localStorage.setItem('shoppingCart',JSON.stringify(shoppingCart));
+      shoppingCart.forEach(m =>{
+          renderShoppingCartItem(m);
+      })
+      calcTotalPrice();
+  });
+  return plusBtn;
+}
+function plusMinusHolder(scId){
+  const buttonsDiv = document.createElement('div');
 
+  const minusBtn = minusBtnRender(scId);
+  buttonsDiv.appendChild(minusBtn);
 
-    buttonsDiv.appendChild(minusBtn);
-    const plusBtn = document.createElement('button');
-    plusBtn.innerHTML = '+';
-    plusBtn.addEventListener('click',()=>{
-        const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
-        const ourIndex = shoppingCart.findIndex(m => m.scId == scId);
-        
+  const plusBtn = plusBtnRender(scId);
+  buttonsDiv.appendChild(plusBtn);
 
-        
-        shoppingCart[ourIndex].count ++;
-        console.log( shoppingCart[ourIndex].count);
-        
-        shoppingCartHolder.innerHTML = '';
-        localStorage.setItem('shoppingCart',JSON.stringify(shoppingCart));
-        shoppingCart.forEach(m =>{
-            renderShoppingCartItem(m);
-        })
-        calcTotalPrice();
-    })
-    buttonsDiv.appendChild(plusBtn);
-    SCHItems.appendChild(buttonsDiv);
-    
+  return buttonsDiv;
+}
+function shoppingCartInfoRender({scId,scName,scPrice,scRate,count},SCHItems){
+  const shoppingCart =  JSON.parse(localStorage.getItem('shoppingCart'));
+  const number = shoppingCart.findIndex(localStorageMovie => localStorageMovie.scId == scId) +1;
     
     const numberSpan = document.createElement('span');
     numberSpan.innerHTML = 'Number :' + number; 
@@ -222,9 +230,16 @@ function renderShoppingCartItem({scId,scName,scPrice,scRate,count}){
 
     shoppingCartHolder.appendChild(SCHItems);
 
+}
 
-
-
+function renderShoppingCartItem({scId,scName,scPrice,scRate,count}){
+  
+  const SCHItems = document.createElement('div');
+  SCHItems.className = 'SCHItems';
+  const buttonsDiv = plusMinusHolder(scId);
+  SCHItems.appendChild(buttonsDiv);
+  
+  shoppingCartInfoRender({scId,scName,scPrice,scRate,count},SCHItems)
 }
 
 function calcTotalPrice(){
