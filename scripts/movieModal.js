@@ -140,11 +140,12 @@ const addToSoppingCart = (movie) => {
 
 function renderShoppingCartItem({scId,scName,scPrice,scRate,count}){
     let shoppingCart =  JSON.parse(localStorage.getItem('shoppingCart'));
-    // console.log(shoppingCart.length);
-    let initialVal = 0 ;
-    const total = shoppingCart.reduce((acc , item) => acc + ((item.count) * (item.scPrice)),initialVal)
 
-    totalPrice.innerHTML = 'Total Price : ' + total + '$';
+    // console.log(shoppingCart.length);
+    // let initialVal = 0 ;
+    // //  total =0
+    // const total =(shoppingCart.length == 0 || !shoppingCart) ? 0: shoppingCart.reduce((acc , item) => acc + ((item.count) * (item.scPrice)),initialVal)
+
     const number = shoppingCart.findIndex(localStorageMovie => localStorageMovie.scId == scId) +1;
     const SCHItems = document.createElement('div');
     SCHItems.className = 'SCHItems';
@@ -172,7 +173,7 @@ function renderShoppingCartItem({scId,scName,scPrice,scRate,count}){
         renderShoppingCartItem(m);
     })
     console.log(shoppingCart);
-
+    calcTotalPrice();
 });
 
 
@@ -193,7 +194,7 @@ function renderShoppingCartItem({scId,scName,scPrice,scRate,count}){
         shoppingCart.forEach(m =>{
             renderShoppingCartItem(m);
         })
-        
+        calcTotalPrice();
     })
     buttonsDiv.appendChild(plusBtn);
     SCHItems.appendChild(buttonsDiv);
@@ -220,15 +221,28 @@ function renderShoppingCartItem({scId,scName,scPrice,scRate,count}){
     SCHItems.appendChild(rateSpan);
 
     shoppingCartHolder.appendChild(SCHItems);
-    
+
+
+
 
 }
+
+function calcTotalPrice(){
+    const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+    let initialVal = 0 ;
+    //  total =0
+    const total =(shoppingCart.length == 0 || !shoppingCart) ? 0: shoppingCart.reduce((acc , item) => acc + ((item.count) * (item.scPrice)),initialVal)
+
+    totalPrice.innerHTML = 'Total Price : ' + total + '$';
+}
+
+
 function renderEmptySC(){
     
     const emptySC = document.createElement('h1');
     emptySC.innerHTML = "NOTHING IN YOUR SHOPING CART :(";
     shoppingCartHolder.appendChild(emptySC);    
-    console.log(shoppingCart);
+    // console.log(shoppingCart);
     return null;
     
 }

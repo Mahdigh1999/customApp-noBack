@@ -10,7 +10,7 @@ shoppingCartBtn.addEventListener('click', () =>{
     if(shoppingCart.length === 0 || !shoppingCart )
         renderEmptySC();
     shoppingCart.forEach(item => {
-            
+        calcTotalPrice();    
         renderShoppingCartItem(item)
     })
     

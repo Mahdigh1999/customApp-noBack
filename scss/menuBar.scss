@@ -10,6 +10,10 @@ $pd-lg: 15px;
   padding-top: $valueY;
   padding-bottom: $valueY;
 }
+@mixin padding-x($valueX) {
+  padding-right: $valueX;
+  padding-left: $valueX;
+}
 @mixin margin-y($valueY) {
   margin-top: $valueY;
   margin-bottom: $valueY;
@@ -26,20 +30,19 @@ $pd-lg: 15px;
   width: 1360px;
   height: 40px;
   margin: auto;
-  input {
-    display: none;
-  }
-  label {
-    display: none;
-  }
-  ul {
+
+  #Menu {
+    transition:all 0.5s;
     padding: 0;
     margin: $mg-xl;
     list-style: none;
-    display: flex;
+    display: flex ;
     flex-grow: 1;
     @include item-center();
     // border: 1px solid red;
+    #closeMenu{
+      display: none;
+    }
     li {
       position: relative;
       @include padding-y(8px);
@@ -53,6 +56,7 @@ $pd-lg: 15px;
       //    border-bottom:3px solid transparent ;
       &:hover::before {
         position: absolute;
+        left: 0;
         bottom: -10px;
         content: "";
         border-radius: 5px;
@@ -62,6 +66,19 @@ $pd-lg: 15px;
       &:hover {
         background-color: #888;
       }
+    }
+  }
+  >*:last-child{
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    button{
+      display: none;
+      // border: 1px solid #888;
+      background-color: inherit;
+      margin-right: 3px;
+      padding: 8px;
+      border-radius: 10px;
     }
   }
   #shoppingCartBtn {
@@ -81,6 +98,62 @@ $pd-lg: 15px;
     width: 100%;
   }
 }
+
+@media screen and (min-width: 1000px) {
+      #Menu{
+
+        display: flex !important;
+
+
+      }
+}
+@media screen and (max-width: 999px) {
+  .menuBar{
+    // display: none;
+    >*:last-child{
+      display: flex;
+      // justify-content: space-between;
+      align-items: center;
+      button{
+        display: block;
+        // border: 1px solid #888;
+        background-color: inherit;
+        margin-right: 3px;
+        padding: 8px;
+        border-radius: 10px;
+      }
+    }
+
+    #Menu{
+      overflow-y: scroll;
+      z-index: 1000;
+      margin: 0;
+      padding: 0;
+      top: 0.5%;
+      left: 0.5%;
+      width: 99%;
+      height: 99%;
+      display: none ;
+      position: fixed;
+      
+      
+      
+      #closeMenu{
+        display: block;
+        text-align: center;
+        &::before{
+          content: none;
+        }
+      }
+      li{
+        text-align: center !important;
+        margin: auto;
+      }
+    }
+  }
+}
+
+
 @media screen and (max-width: 1360px) {
   .menuBar {
     ul {

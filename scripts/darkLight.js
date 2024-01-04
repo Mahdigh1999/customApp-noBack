@@ -10,6 +10,7 @@ function makeDark(isDark) {
     // shoppingCartSVG.style.fill = '#fff';
     shoppingCartPage.style.backgroundColor = '#333';
     movieModal.style.backgroundColor = '#333';
+    Menu.style.backgroundColor = '#333';
 
     // likeSVG.style.fill = '#fff'
     document.body.className = "dark";
@@ -23,6 +24,7 @@ function makeDark(isDark) {
     // shoppingCartSVG.style.fill = '#111';
     shoppingCartPage.style.backgroundColor = '#ddd';
     movieModal.style.backgroundColor = '#ddd';
+    Menu.style.backgroundColor = '#ddd'
     // likeSVG.style.fill = '#111'
     // document.getElementsByClassName("likeSVG").style.fill ==='#111';
     document.body.className = "light";
@@ -30,7 +32,12 @@ function makeDark(isDark) {
     darkLightLabel.innerHTML = "Light Mode";
   }
 }
-makeDark(darkModeStatus.dark);
+if(darkModeStatus)
+  makeDark(darkModeStatus.dark);
+else{
+  const darkLight = {dark:false}
+  localStorage.setItem('darkLight',JSON.stringify(darkLight));
+}
 function handlePageColor() {
   const darkModeStatus = JSON.parse(localStorage.getItem("darkLight"))
     ? JSON.parse(localStorage.getItem("darkLight"))
