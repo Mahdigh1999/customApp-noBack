@@ -27,6 +27,7 @@ const openModalPage = () => {
 const modalImagesRender =(images) =>{
     gallery.innerHTML = "";
     gallery.style.left = "0";
+    pos = 0;
     images.forEach((image) => {
       let div = document.createElement("div");
       div.className = "items";
